@@ -243,6 +243,7 @@ bool Do_Reinforcements(TeamTypeClass *teamtype)
 			cell = Map.Calculated_Cell(source, teamtype->House);
 			object->IsALoaner = true;
 			if (object->Unlimbo(Cell_Coord(cell), DIR_W)) {
+				object->IsLocked = true; // fix for gunboat not firing
 				object->Assign_Mission(MISSION_GUARD);
 				object->Assign_Destination(::As_Target(XY_Cell(Map.MapCellX-1, Cell_Y(Coord_Cell(object->Coord)) )));
 			} else {
